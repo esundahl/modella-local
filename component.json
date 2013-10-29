@@ -1,0 +1,14 @@
+{
+  "name": "modella-local",
+  "repo": "esundahl/modella-local",
+  "description": "local storage plugin for modella",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
