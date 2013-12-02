@@ -4,11 +4,15 @@
   "description": "local storage plugin for modella",
   "version": "0.0.1",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "ask11/indexed": "*",
+    "yields/dex": "*"
+  },
   "development": {},
   "license": "MIT",
-  "main": "index.js",
+  "main": "modella-local.js",
   "scripts": [
-    "index.js"
-  ]
+    "modella-local.js"
+  ],
+  "remotes": []
 }
