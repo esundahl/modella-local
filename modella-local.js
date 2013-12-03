@@ -28,22 +28,37 @@ var local = module.exports = function (db) {
 
 local.find = function (params, fn) {
   var self = this
-  if (arguments.length < 2) fn = params || function() {}
+  fn = fn || params || function() {}
   
   local._keys.call(this, getRecords)
   
   function getRecords (err, keys) {
     if (err) return fn(err)
+
     keys.forEach(function (key) {
       local.db.get(key)
     })
+    
     local.db.end(function (err, all) {
       if (err) return fn(err)
       var models = []
+      
+      if (arguments.length > 1) all = filter(all)
+      
       all.forEach(function (obj) {
         models.push(new self(obj.item.value))
       })
+      
       fn(null, models)
+    })
+  }
+  
+  function filter (records) {
+    return records.filter(function (record) {
+      for (var param in params) {
+        if (params[param] !== record.item.value[param]) return false
+      }
+      return true
     })
   }
 }
